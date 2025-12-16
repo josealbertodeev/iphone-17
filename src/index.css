@@ -11,10 +11,33 @@
         color: #fff;
         background-color: #121214;
         font-family: 'Verdana', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     html {
         scroll-behavior: smooth;
+    }
+
+    /* Melhorias para Android */
+    @media (max-width: 640px) {
+        html {
+            font-size: 14px;
+        }
+    }
+
+    /* Previne zoom em inputs */
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    /* Melhora a usabilidade de botões em touch */
+    button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
     }
 }
 
@@ -24,5 +47,13 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+    }
+
+    /* Safe area inset support para dispositivos com notch */
+    @supports (padding: max(0px)) {
+        nav {
+            padding-left: max(0.75rem, env(safe-area-inset-left));
+            padding-right: max(0.75rem, env(safe-area-inset-right));
+        }
     }
 }
